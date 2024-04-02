@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Smart Home System</string>
+    <string name="title_activity_register">Register</string>
+    <string name="register_now">Register Now</string>
+    <string name="don_t_have_an_account">don\'t have an account?</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email Address</string>
+    <string name="login_here">Login Here</string>
+    <string name="register">Register</string>
+    <string name="register_here">register Here</string>
+    <string name="full_name">Full Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="register_account">Register account</string>
+    <string name="already_have_an_account">Already Have an account?</string>
+    <string name="login_now">Login Now</string>
+    <string name="confirm_password">confirm password</string>
+</resources>
