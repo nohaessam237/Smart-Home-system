@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/background">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/toolbar"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="5dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:background="@color/appbar">
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        android:src="@drawable/baseline_arrow_back_ios_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/arrow_back"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="My Profile"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/arrow_back"
+        app:layout_constraintTop_toTopOf="@id/arrow_back"
+        app:layout_constraintStart_toEndOf="@id/arrow_back"
+        android:textColor="@color/background"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+     <de.hdodenhof.circleimageview.CircleImageView
+           android:layout_width="150dp"
+           android:layout_height="150dp"
+         app:layout_constraintTop_toBottomOf="@id/toolbar"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         android:layout_marginTop="50dp"
+         android:src="@color/appbar"
+         android:id="@+id/profile_picture"
+         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/profile_picture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button"
+        android:id="@+id/linu"
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Renad Haitham"
+            android:textSize="26sp"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginVertical="5dp"
+            />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="renad@gmail.com"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:fontFamily="sans-serif"
+            android:layout_marginVertical="5dp"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="01017979060"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:fontFamily="sans-serif"
+            android:layout_marginVertical="5dp"/>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/button"
+        android:text="Log out"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linu"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="90dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
