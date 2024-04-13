@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "141441317696",
+    "firebase_url": "https://smart-home-system-7cd5a-default-rtdb.firebaseio.com",
     "project_id": "smart-home-system-7cd5a",
     "storage_bucket": "smart-home-system-7cd5a.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.smarthomesystem"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "141441317696-96i8f8bev077vkmragn9odhvdl54l5pa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smarthomesystem",
+            "certificate_hash": "ee61db8db6604026bd133e5fd4c452194aa8e9ab"
+          }
+        },
+        {
+          "client_id": "141441317696-r3fd5l9bivkc825arubl9i57dheio6na.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBdg8Z0FiyuP17ReXccwaTpZY-UxzGUYLw"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141441317696-r3fd5l9bivkc825arubl9i57dheio6na.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

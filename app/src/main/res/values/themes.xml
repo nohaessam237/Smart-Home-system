@@ -2,4 +2,25 @@
 <resources>
 
     <style name="Theme.SmartHomeSystem" parent="android:Theme.Material.Light.NoActionBar" />
+    
+    <!--- Theme for Night Mode switch-->
+    <style name="NightModeSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#FFFF00</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <!--- Theme for Notifications switch -->
+    <style name="NotificationsSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#AA1455</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <!--- Theme for private account switch -->
+    <style name="privateAccountSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#FF6E40</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
 </resources>
