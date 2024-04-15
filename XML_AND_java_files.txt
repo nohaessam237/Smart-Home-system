@@ -1,0 +1,716 @@
+Login
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="LoginActivity"
+    android:background="@drawable/bg5"
+
+    >
+
+
+    <!-- Password EditText -->
+
+    <!-- Remember Me Checkbox -->
+
+    <!-- Login Button -->
+
+    <!-- Link to Register -->
+
+    <TextView
+
+        android:layout_width="378dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="480dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="Login"
+
+        android:textAlignment="center"
+        android:textColor="#97000000"
+        android:textSize="50sp" />
+
+    <EditText
+        android:id="@+id/et_User_name"
+        android:layout_width="285dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="397dp"
+
+        android:background="@drawable/oval_shape"
+        android:drawableLeft="@drawable/person"
+        android:hint="Username"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/et_Password"
+        android:layout_width="285dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="332dp"
+
+        android:background="@drawable/oval_shape"
+        android:drawableLeft="@drawable/lock"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="152dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="248dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="273dp"
+
+        android:text="Forgot password?"
+        android:textAlignment="center" />
+
+    <CheckBox
+        android:id="@+id/checkBoxRememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="290dp"
+        android:text="Remember Me" />
+
+    <TextView
+        android:id="@+id/textViewRegister"
+        android:layout_width="295dp"
+        android:layout_height="89dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="131dp"
+        android:background="#70000000"
+        android:text="Don't have an account?"
+        app:backgroundTint="@color/white" />
+
+    <Button
+        android:id="@+id/btn_register_here"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="165dp"
+        android:background="#70000000"
+        android:text="register here!"
+        android:textColor="@color/purple_700"
+        android:textSize="10dp"
+        app:backgroundTint="@color/white" />
+
+    <Button
+        android:id="@+id/Btn_login"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="226dp"
+        android:text="Login"
+        app:backgroundTint="#83000000" />
+
+</RelativeLayout>
+
+
+-------------------------------------------------------------------------------
+Register
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/bg5"
+
+    >
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abril_fatface"
+        android:text="Sign up"
+        android:textAlignment="center"
+        android:textColor="#97000000"
+
+
+        android:textSize="50sp" />
+
+    <EditText
+        android:id="@+id/et_User_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/oval_shape"
+        android:hint="First Name"
+        android:inputType="text"
+        android:drawableLeft="@drawable/person"
+
+
+        />
+    />
+    <EditText
+        android:id="@+id/et_RePassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/oval_shape"
+        android:hint="Last Name"
+        android:inputType="text"
+
+
+        android:drawableLeft="@drawable/person"
+
+        />
+
+    <EditText
+        android:id="@+id/et_Password"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/oval_shape"
+
+        android:hint="password"
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/lock"
+
+        />
+
+    <EditText
+        android:id="@+id/et_Email"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/oval_shape"
+
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:drawableLeft="@drawable/mail"
+
+        />
+
+    <EditText
+        android:id="@+id/et_Phone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/oval_shape"
+
+        android:hint="Phone number"
+        android:inputType="phone"
+        android:drawableLeft="@drawable/phone"
+
+        />
+
+ <!--   <TextView
+        android:id="@+id/tvdate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/oval_shape"
+        android:hint="select date"
+        android:textColor="@color/black"
+        android:textColorHint="#35342F"
+        android:textSize="20sp"
+        android:drawableLeft="@drawable/date"
+        />-->
+    <TextView
+        android:id="@+id/tvdate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/oval_shape"
+        android:hint="Select Date of Birth"
+        android:textColor="@color/black"
+        android:textColorHint="#35342F"
+        android:textSize="20sp"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/date" />
+
+
+    <!-- First layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/oval_shape"
+            android:drawableLeft="@drawable/location"
+            android:text="Country"
+            android:textSize="20sp"
+
+            />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/oval_shape"
+            app:backgroundTint="#83000000"
+
+            />
+    </LinearLayout>
+
+    <!-- Second layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_shape"
+            android:drawableLeft="@drawable/location"
+            android:text="City"
+            android:textSize="20sp"
+
+            />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/oval_shape"
+            app:backgroundTint="#83000000" />
+    </LinearLayout>
+    <!--  <RadioGroup
+            android:id="@+id/radioGroupGender"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+
+        </RadioGroup>-->
+    <!--
+          <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="296dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp" />&ndash;&gt;-->
+
+    <CheckBox
+        android:id="@+id/checkBoxAgree"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Agree with terms and conditions" />
+
+    <Button
+        android:id="@+id/Btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:text="Register"
+        android:textColor="@color/black"
+        app:backgroundTint="#83000000"
+        android:background="@drawable/oval_shape"
+
+        />
+
+    <Button
+        android:id="@+id/Btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/oval_shape"
+        app:backgroundTint="#83000000"
+        android:text="Login"
+        android:textColor="@color/black"
+
+
+/>
+
+
+</LinearLayout>
+----------------------------------------------------------------------------------
+Login .java 
+package com.example.myapplication;
+
+
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class LoginActivity extends AppCompatActivity {
+
+    EditText et_username, et_password;
+    //TextView textView = findViewById(R.id.textViewRegister);
+    Button btn_login,btn_register;
+    DBhelper db_helper;
+
+
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        et_username = findViewById(R.id.et_User_name);
+        et_password = findViewById(R.id.et_Password);
+        btn_login = findViewById(R.id.Btn_login);
+        btn_register = findViewById(R.id.btn_register_here);
+
+        db_helper = new DBhelper(this);
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean login_flag = db_helper.chaeckUserName(et_username.getText().toString(), et_password.getText().toString());
+                boolean Exist_flag = db_helper.chaeckUserNameExist(et_username.getText().toString());
+                if (!Exist_flag) {
+                    Toast.makeText(LoginActivity.this, "False username  ", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
+                if (login_flag) {
+                    Toast.makeText(LoginActivity.this, "Login success :) ", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(LoginActivity.this, "Login Failed ,please ReEnter password ", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(LoginActivity.this, "ReEnter password  ", Toast.LENGTH_LONG).show();
+
+
+                }
+            }
+        });
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+      /*  textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Define the URL to open
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+
+
+                // Start the activity
+                startActivity(intent);
+            }
+        });*/
+    }
+}
+-------------------------------------------------------------------------------------
+register.java
+
+package com.example.myapplication;
+
+
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
+
+public class RegisterActivity extends AppCompatActivity {
+
+    EditText et_user, et_pass, et_repass;
+    Button btn_register, btn_login;
+    DBhelper db_helper;
+
+    private static final String TAG = "RegisterActivity";
+    /////Date/////
+    TextView DisplayDate;
+    DatePickerDialog.OnDateSetListener mylistener;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //definitions
+        setContentView(R.layout.activity_regesiter);
+
+       /* DisplayDate = (TextView) findViewById(R.id.tvdate);
+        DisplayDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(RegisterActivity.this, android.R.style.Theme_Holo_Light_Dialog,
+                        mylistener, year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+            }
+        });*/
+
+        DisplayDate = findViewById(R.id.tvdate);
+
+        // Set up the DatePickerDialog.OnDateSetListener
+        mylistener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                // Display the selected date in your TextView
+                String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
+                DisplayDate.setText(selectedDate);
+            }
+        };
+
+        // Set up the click listener for displaying the DatePickerDialog
+        DisplayDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        RegisterActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog,
+                        mylistener,
+                        year,
+                        month,
+                        day
+                );
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+
+        et_user = findViewById(R.id.et_User_name);
+        et_pass = findViewById(R.id.et_Password);
+        et_repass = findViewById(R.id.et_RePassword);
+        btn_login = findViewById(R.id.Btn_login);
+        btn_register = findViewById(R.id.Btn_register);
+        db_helper = new DBhelper(this);
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //input data , Registration process
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user, pass, repass;
+                user = et_user.getText().toString();
+                pass = et_pass.getText().toString();
+                repass = et_repass.getText().toString();
+
+                if (user.equals(" ") || pass.equals(" ") || repass.equals(" ")) {
+                    Toast.makeText(RegisterActivity.this, "Please fill all fields", Toast.LENGTH_LONG).show();
+
+                } else
+                //if all  data filled properly
+                {
+                    //password match repassword
+                    // if (pass.equals(repass)) {
+
+                    if (db_helper.chaeckUserNameExist(user)) {
+                        Toast.makeText(RegisterActivity.this, "User already exists ", Toast.LENGTH_LONG).show();
+                        return;
+
+                    }
+                    boolean register_flag;
+                    register_flag = db_helper.insertData(user, pass);
+                    if (register_flag == true) {
+                        Toast.makeText(RegisterActivity.this, "Registration success :) ", Toast.LENGTH_LONG).show();
+
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Registration failed :( ", Toast.LENGTH_LONG).show();
+
+                    }
+
+                }/* else {
+                        Toast.makeText(RegisterActivity.this, "Please rewrite password", Toast.LENGTH_LONG).show();
+
+                    }*/
+
+
+            }
+        });
+
+
+        ////////Location//////
+        Spinner spinnerCountry = findViewById(R.id.spinner1);
+        Spinner spinnerCity = findViewById(R.id.spinner2);
+
+        // Sample data
+        String[] countries = {"Country 1", "Country 2", "Country 3"};
+        String[] cities = {"City 1", "City 2", "City 3"};
+
+        // Create ArrayAdapter for the Spinners
+        ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countries);
+        ArrayAdapter<String> cityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cities);
+
+        // Set the dropdown style
+        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Attach the ArrayAdapter to the Spinners
+        spinnerCountry.setAdapter(countryAdapter);
+        spinnerCity.setAdapter(cityAdapter);
+
+    }
+}
+------------------------------------------------------------------------
+DBhelper
+
+package com.example.myapplication;
+
+
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import androidx.annotation.Nullable;
+
+public class DBhelper extends SQLiteOpenHelper {
+
+    public static final String DB_name="register.db";
+    //constructor
+    public DBhelper(@Nullable Context context) {
+        super(context,DB_name, null, 1);
+    }
+
+    @Override
+
+    public void onCreate(SQLiteDatabase db) {
+        //create table "users" with 2 col ,username & password
+        db.execSQL("create table users (username TEXT primary key ,password TEXT)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        ///--------->?
+        db.execSQL("drop table if exists users");
+    }
+
+    //to check that data inserted successfully or not
+    public boolean insertData(String username,String password)
+    {
+        SQLiteDatabase myDB=this.getWritableDatabase();
+        ContentValues contentValue=new ContentValues();
+        contentValue.put("username",username);
+        contentValue.put("password",password);
+        long results = myDB.insert("users",null,contentValue);  //if inserted successfully doesn't return 1=-1
+        if(results==-1)
+            return false;
+        else
+            return true;
+
+    }
+
+    boolean chaeckUserNameExist(String username)
+    {
+        SQLiteDatabase myDB=this.getWritableDatabase();
+        Cursor cursor=myDB.rawQuery("select * from users where username = ? ",new String[]{username}); //-->
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
+
+
+    }
+
+
+    boolean chaeckUserName(String username,String password)
+    {
+        SQLiteDatabase myDB=this.getWritableDatabase();
+        Cursor cursor=myDB.rawQuery("select * from users where username = ? and password = ?",new String[]{username,password}); //-->
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
+
+
+    }
+
+
+}
