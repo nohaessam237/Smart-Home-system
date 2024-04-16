@@ -10,6 +10,14 @@
         android:id="@+id/menusettings" />
 
     <item
+        android:title="LogCat"
+        android:id="@+id/menulogcat" />
+
+    <item
+        android:title="search"
+        android:id="@+id/menusearch" />
+
+    <item
         android:title="Log out"
         android:id="@+id/menulogout" />
 
