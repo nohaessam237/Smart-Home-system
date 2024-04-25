@@ -34,6 +34,7 @@ public class profile extends AppCompatActivity {
     TextView useremail;
     TextView userphone;
     FirebaseAuth auth;
+    Log log = new Log();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +59,7 @@ public class profile extends AppCompatActivity {
         });
 
         backBtn.setOnClickListener(v -> {
-
+            startActivity(new Intent(profile.this, MainActivity.class));
         });
 
 
@@ -84,12 +85,7 @@ public class profile extends AppCompatActivity {
             useremail.setText(user.getEmail());
             userphone.setText(user.getPhoneNumber());
 
-            if(user != null){
-                databaseReference.child("users").child(String.valueOf(user.getPhotoUrl())).setValue(selectedImageUri);
-            }else{
-                Toast.makeText(this, "no signed user", Toast.LENGTH_SHORT).show();
-            }
-
+            databaseReference.child("users").child(String.valueOf(user.getPhotoUrl())).setValue(selectedImageUri);
 
         }
     }

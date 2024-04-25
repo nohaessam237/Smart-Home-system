@@ -18,28 +18,23 @@ import java.util.Locale;
 public class Log extends AppCompatActivity {
 
     private ArrayList<String> logData;
-    private GridView gridView;
     private ArrayAdapter<String> logAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
 
         logData = new ArrayList<>();
-        gridView = findViewById(R.id.gridView);
+        GridView gridView = findViewById(R.id.gridView);
         logAdapter = new ArrayAdapter<>(this, R.layout.activity_log, logData);
         gridView.setAdapter(logAdapter);
-
-        // Example of logging an action
-        logAction("App started");
     }
 
-    private void logAction(String action) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
-        String timestamp = sdf.format(new Date());
-        String logEntry = timestamp + ": " + action;
-        logData.add(logEntry);
-        logAdapter.notifyDataSetChanged();
-    }
+//    public void logAction(String action) {
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+//        String timestamp = sdf.format(new Date());
+//        String logEntry = timestamp + ": " + action;
+//        logData.add(logEntry);
+//        logAdapter.notifyDataSetChanged();
+//    }
 }

@@ -29,6 +29,7 @@ import java.util.Objects;
 public class Register extends AppCompatActivity {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://smart-home-system-7cd5a-default-rtdb.firebaseio.com/");
+    Log log = new Log();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,26 +49,23 @@ public class Register extends AppCompatActivity {
         final URI profile_picture = URI.create("");
 
 
-        selectdateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar calendar = Calendar.getInstance();
+        selectdateBtn.setOnClickListener(v -> {
+            final Calendar calendar = Calendar.getInstance();
 
-                // Get the current year, month, and day from the Calendar
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
+            // Get the current year, month, and day from the Calendar
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(Register.this,
-                        (view, year1, monthOfYear, dayOfMonth) -> {
-                            String selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1;
-                            birth_date.setText(selectedDate);
-                        }, year, month, day);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(Register.this,
+                    (view, year1, monthOfYear, dayOfMonth) -> {
+                        String selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1;
+                        birth_date.setText(selectedDate);
+                    }, year, month, day);
 
-                datePickerDialog.show();
+            datePickerDialog.show();
 
 
-            }
         });
 
 

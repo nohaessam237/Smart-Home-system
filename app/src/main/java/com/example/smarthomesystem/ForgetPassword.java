@@ -1,0 +1,69 @@
+package com.example.smarthomesystem;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+public class ForgetPassword extends AppCompatActivity {
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://smart-home-system-7cd5a-default-rtdb.firebaseio.com/");
+    FirebaseAuth auth;
+    ProgressBar progressBar;
+    Button BtnReset;
+    String strEmail;
+    Log log = new Log();
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_forgetpassword);
+
+
+        Button Btnback = findViewById(R.id.btnForgotPasswordBack);
+        BtnReset = findViewById(R.id.btnReset);
+        EditText editEmail = findViewById(R.id.ForgotPasswordEmail);
+
+        auth = FirebaseAuth.getInstance();
+
+        BtnReset.setOnClickListener(v -> {
+            strEmail = editEmail.getText().toString().trim();
+            if(!TextUtils.isEmpty(strEmail)){
+                ResetPassword();
+            }
+            else{
+                editEmail.setError("Email Field can't be empty");
+            }
+        });
+
+        Btnback.setOnClickListener(v -> {
+            startActivity(new Intent(ForgetPassword.this, Login.class));
+        });
+
+    }
+
+    private void ResetPassword() {
+        auth.sendPasswordResetEmail(strEmail).addOnSuccessListener(unused -> {
+            Toast.makeText(ForgetPassword.this, "Reset password Link has been sent to the registered email", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(ForgetPassword.this, Login.class));
+            finish();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(log, "error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        });
+
+    }
+}

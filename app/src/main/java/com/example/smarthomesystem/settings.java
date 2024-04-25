@@ -18,6 +18,7 @@ public class settings extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST_CODE = 1;
     private ImageView profilePicture;
     FirebaseAuth auth;
+    Log log = new Log();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

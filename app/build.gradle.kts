@@ -80,7 +80,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.0.0")
     implementation("com.google.firebase:firebase-database")
     implementation ("com.facebook.android:facebook-android-sdk:latest.release")
-
+    implementation ("com.google.android.material:material:1.5.0")
 
 
 }

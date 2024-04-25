@@ -37,5 +37,9 @@
     <string name="renad_gmail_com">renad@gmail.com</string>
     <string name="_01017979060">01017979060</string>
     <string name="home">Home</string>
+    <string name="email">Email</string>
+    <string name="provide_your_account_s_email_for_which_you_want_to_reset_your_password">Provide your account\'s email for which you want to reset your password!</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="back">Back</string>
 
 </resources>
