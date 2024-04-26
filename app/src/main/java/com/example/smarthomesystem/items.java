@@ -39,7 +39,7 @@ public class items extends AppCompatActivity {
         }
         //implement password activity
         else if(itemID == 1){
-            setContentView(R.layout.activity_settings);
+
             
         }
         //implement Light activity
