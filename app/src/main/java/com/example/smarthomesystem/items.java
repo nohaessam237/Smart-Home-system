@@ -32,7 +32,7 @@ public class items extends AppCompatActivity {
                 @Override
                 public void run() {
                     sendTemperatureToFirebase();
-                    tmp_value.setText(tmp);
+//                    tmp_value.setText(tmp);
                 }
             }, 0, 5000);
 
