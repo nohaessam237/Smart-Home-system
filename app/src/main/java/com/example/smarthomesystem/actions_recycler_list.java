@@ -1,11 +1,10 @@
 package com.example.smarthomesystem;
 
-public class recycler_list {
+public class actions_recycler_list {
     private Integer img;
     private String txt;
 
-
-    public recycler_list(Integer img, String txt) {
+    public actions_recycler_list(Integer img, String txt) {
         this.img = img;
         this.txt = txt;
     }

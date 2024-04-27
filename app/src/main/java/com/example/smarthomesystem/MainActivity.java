@@ -18,9 +18,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
-    ArrayList<recycler_list> recycler_list;
+    ArrayList<actions_recycler_list> actions_list;
     RecyclerView recyclerView;
-    Log log = new Log();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,24 +27,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
         auth = FirebaseAuth.getInstance();
         auth.getCurrentUser();
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.actions_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
-        recycler_list = new ArrayList<>();
+        actions_list = new ArrayList<>();
 
-        recycler_list.add(new recycler_list(R.drawable.temperature,"Temperature"));
-        recycler_list.add(new recycler_list(R.drawable.password,"Password"));
-        recycler_list.add(new recycler_list(R.drawable.light,"Light"));
-        recycler_list.add(new recycler_list(R.drawable.fan,"Fan"));
-        recycler_list.add(new recycler_list(R.drawable.attack,"Entry Attack"));
-        recycler_list.add(new recycler_list(R.drawable.message,"Message"));
+        actions_list.add(new actions_recycler_list(R.drawable.temperature,"Temperature"));
+        actions_list.add(new actions_recycler_list(R.drawable.password,"Password"));
+        actions_list.add(new actions_recycler_list(R.drawable.light,"Light"));
+        actions_list.add(new actions_recycler_list(R.drawable.fan,"Fan"));
+        actions_list.add(new actions_recycler_list(R.drawable.attack,"Entry Attack"));
+        actions_list.add(new actions_recycler_list(R.drawable.message,"Message"));
 
-        recycler_adapter recycler_adapter = new recycler_adapter(recycler_list,this);
-        recyclerView.setAdapter(recycler_adapter);
+        actions_recycler_adapter actions_adapter = new actions_recycler_adapter(actions_list,this);
+        recyclerView.setAdapter(actions_adapter);
 
     }
 
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this,Search.class));
         }
         if(itemID == R.id.menulogcat){
-            startActivity(new Intent(MainActivity.this,Log.class));
+            startActivity(new Intent(MainActivity.this, Logs.class));
         }
 
         return super.onOptionsItemSelected(item);

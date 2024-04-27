@@ -14,25 +14,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class recycler_adapter extends RecyclerView.Adapter<recycler_adapter.ViewHolder> {
+public class actions_recycler_adapter extends RecyclerView.Adapter<actions_recycler_adapter.ViewHolder> {
 
-    private final ArrayList<com.example.smarthomesystem.recycler_list> recycler_list;
+    private final ArrayList<actions_recycler_list> recycler_list;
     private final Context context;
 
-    public recycler_adapter(ArrayList<com.example.smarthomesystem.recycler_list> recycler_list, Context context) {
+    public actions_recycler_adapter(ArrayList<actions_recycler_list> recycler_list, Context context) {
         this.recycler_list = recycler_list;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public recycler_adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_card,parent,false);
+    public actions_recycler_adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.actions_recyclerview_card,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull recycler_adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull actions_recycler_adapter.ViewHolder holder, int position) {
             holder.imageView.setImageResource(recycler_list.get(position).getImg());
             holder.textView.setText(recycler_list.get(position).getTxt());
 
@@ -49,7 +49,7 @@ public class recycler_adapter extends RecyclerView.Adapter<recycler_adapter.View
         return recycler_list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
         ImageView imageView;
         TextView textView;

@@ -29,7 +29,6 @@ import java.util.Objects;
 public class Register extends AppCompatActivity {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://smart-home-system-7cd5a-default-rtdb.firebaseio.com/");
-    Log log = new Log();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +43,16 @@ public class Register extends AppCompatActivity {
         final EditText password = findViewById(R.id.password);
         final EditText conf_password = findViewById(R.id.confpassword);
         final Button registerBtn = findViewById(R.id.registerBtn);
-        final ImageButton selectdateBtn = findViewById(R.id.birthdate_picker_button);
+        final ImageButton select_dateBtn = findViewById(R.id.birthdate_picker_button);
         final TextView loginNowBtn = findViewById(R.id.loginNowBtn);
         final URI profile_picture = URI.create("");
 
 
-        selectdateBtn.setOnClickListener(v -> {
+
+
+
+
+        select_dateBtn.setOnClickListener(v -> {
             final Calendar calendar = Calendar.getInstance();
 
             // Get the current year, month, and day from the Calendar
@@ -64,78 +67,76 @@ public class Register extends AppCompatActivity {
                     }, year, month, day);
 
             datePickerDialog.show();
-
-
         });
 
+        registerBtn.setOnClickListener(v -> {
 
+            //retrieve data from txt fields
+            final String full_nameTxt = full_name.getText().toString();
+            final String user_nameTxt = user_name.getText().toString();
+            final String phone = mobile_num.getText().toString();
+            final String emailTxt = email_address.getText().toString();
+            final String birth_dateTxt = birth_date.getText().toString();
+            final String pass = password.getText().toString();
+            final String conf_pass = conf_password.getText().toString();
 
-        registerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //retrieve data from txt fields
-                final String full_nameTxt = full_name.getText().toString();
-                final String user_nameTxt = user_name.getText().toString();
-                final String phone = mobile_num.getText().toString();
-                final String emailTxt = email_address.getText().toString();
-                final String birth_dateTxt = birth_date.getText().toString();
-                final String pass = password.getText().toString();
-                final String conf_pass = conf_password.getText().toString();
-
-                //check data fields if either one is empty before sending it to firebase
-                if (full_nameTxt.isEmpty() || phone.isEmpty() || emailTxt.isEmpty() || pass.isEmpty() || user_nameTxt.isEmpty() || birth_dateTxt.isEmpty()){
-                    Toast.makeText(Register.this, "please fill all the fields", Toast.LENGTH_SHORT).show();
-                }
-                //check if passwords match
-                else if (!pass.equals(conf_pass)) {
-                    Toast.makeText(Register.this, "passwords don't match", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            //check if phone number, email or username is never been registered before
-                            boolean found = false;
-                            for (DataSnapshot dataSnapshotChild : snapshot.getChildren()) {
-                                String EmailAddress = Objects.requireNonNull(dataSnapshotChild.child("email address").getValue()).toString();
-                                String mobile_number = Objects.requireNonNull(dataSnapshotChild.child("mobile num").getValue()).toString();
-                                String user_name = Objects.requireNonNull(dataSnapshotChild.child("user name").getValue()).toString();
-                                if (mobile_number.equals(phone) || EmailAddress.equals(emailTxt) || user_name.equals(user_nameTxt)) {
-                                    found = true;
-                                    break;
-                                }
-                            }
-                            if(found){
-                                Toast.makeText(Register.this, "This user already exists with similar phone, email or username", Toast.LENGTH_LONG).show();
-                            }
-                            else{
-                                //user_nameTxt is out identifier unique value for each customer
-                                databaseReference.child("users").child(user_nameTxt).child("full name").setValue(full_nameTxt);
-                                databaseReference.child("users").child(user_nameTxt).child("user name").setValue(user_nameTxt);
-                                databaseReference.child("users").child(user_nameTxt).child("email address").setValue(emailTxt);
-                                databaseReference.child("users").child(user_nameTxt).child("mobile num").setValue(phone);
-                                databaseReference.child("users").child(user_nameTxt).child("birth date").setValue(birth_dateTxt);
-                                databaseReference.child("users").child(user_nameTxt).child("password").setValue(pass);
-                                databaseReference.child("users").child(user_nameTxt).child("profile picture").setValue(profile_picture);
-
-                                Toast.makeText(Register.this, "User Registered Successfully.",Toast.LENGTH_SHORT).show();
-                                finish();
+            //check data fields if either one is empty before sending it to firebase
+            if (full_nameTxt.isEmpty() || phone.isEmpty() || emailTxt.isEmpty() || pass.isEmpty() || user_nameTxt.isEmpty() || birth_dateTxt.isEmpty()){
+                Toast.makeText(Register.this, "please fill all the fields", Toast.LENGTH_SHORT).show();
+            }
+            //check if passwords match
+            else if (!pass.equals(conf_pass)) {
+                Toast.makeText(Register.this, "passwords don't match", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                //firebase data
+                databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //check if phone number, email or username is never been registered before
+                        boolean found = false;
+                        for (DataSnapshot dataSnapshotChild : snapshot.getChildren()) {
+                            String EmailAddress = Objects.requireNonNull(dataSnapshotChild.child("email address").getValue()).toString();
+                            String mobile_number = Objects.requireNonNull(dataSnapshotChild.child("mobile num").getValue()).toString();
+                            String user_name1 = Objects.requireNonNull(dataSnapshotChild.child("user name").getValue()).toString();
+                            if (mobile_number.equals(phone) || EmailAddress.equals(emailTxt) || user_name1.equals(user_nameTxt)) {
+                                found = true;
+                                break;
                             }
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
+                        if(found){
+                            Toast.makeText(Register.this, "This user already exists with similar phone, email or username", Toast.LENGTH_LONG).show();
                         }
-                    });
+                        else{
+                            //user_nameTxt is out identifier unique value for each customer
+                            databaseReference.child("users").child(user_nameTxt).child("full name").setValue(full_nameTxt);
+                            databaseReference.child("users").child(user_nameTxt).child("user name").setValue(user_nameTxt);
+                            databaseReference.child("users").child(user_nameTxt).child("email address").setValue(emailTxt);
+                            databaseReference.child("users").child(user_nameTxt).child("mobile num").setValue(phone);
+                            databaseReference.child("users").child(user_nameTxt).child("birth date").setValue(birth_dateTxt);
+                            databaseReference.child("users").child(user_nameTxt).child("password").setValue(pass);
+                            databaseReference.child("users").child(user_nameTxt).child("profile picture").setValue(profile_picture);
 
+                            sqlite_caching sqlite;
+                            sqlite = new sqlite_caching(Register.this);
+                            sqlite.addOne(full_nameTxt, user_nameTxt, phone, emailTxt, birth_dateTxt, pass);
 
+                            Toast.makeText(Register.this, "User Registered Successfully.",Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
 
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
 
             }
+
+
         });
 
         loginNowBtn.setOnClickListener(new View.OnClickListener() {

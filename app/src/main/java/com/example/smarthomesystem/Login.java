@@ -46,7 +46,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth auth;
     CallbackManager mCallbackManager;
     GoogleSignInClient googleSignInClient;
-    Log log = new Log();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -142,8 +142,10 @@ public class Login extends AppCompatActivity {
                             DataSnapshot userSnapshot = snapshot.child(usernameTxt.replace(".",","));
                             String storedPass = userSnapshot.child("password").getValue(String.class);
                             if (storedPass != null && storedPass.equals(pass)) {
+                                Intent intent = new Intent(Login.this,MainActivity.class);
+                                intent.putExtra("username",usernameTxt);
+                                startActivity(intent);
                                 Toast.makeText(Login.this, "successfully logged in", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Login.this, MainActivity.class));
                                 finish();
                             } else {
                                 Toast.makeText(Login.this, "wrong password", Toast.LENGTH_SHORT).show();

@@ -21,7 +21,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-            android:name=".Log"
+            android:name=".Logs"
             android:exported="false"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

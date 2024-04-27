@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,11 +20,15 @@ import com.facebook.login.LoginManager;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.net.URI;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class profile extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://smart-home-system-7cd5a-default-rtdb.firebaseio.com/");
@@ -34,7 +39,6 @@ public class profile extends AppCompatActivity {
     TextView useremail;
     TextView userphone;
     FirebaseAuth auth;
-    Log log = new Log();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +52,15 @@ public class profile extends AppCompatActivity {
         profilePicture = findViewById(R.id.profile_picture);
         backBtn = findViewById(R.id.arrow_back);
 
+        FirebaseUser user = auth.getCurrentUser();
+        if(user != null){
+            username.setText(user.getDisplayName());
+            useremail.setText(user.getEmail());
+            userphone.setText(user.getPhoneNumber());
+        }
+        else{
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        final FirebaseUser user = auth.getCurrentUser();
+        }
 
         profilePicture.setOnClickListener(v -> {
             Intent imagePickerIntent = new Intent(Intent.ACTION_PICK);
@@ -79,13 +89,15 @@ public class profile extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
 
             FirebaseUser user = auth.getCurrentUser();
-            Uri selectedImageUri = data.getData();
-            profilePicture.setImageURI(selectedImageUri);
-            username.setText(user.getDisplayName());
-            useremail.setText(user.getEmail());
-            userphone.setText(user.getPhoneNumber());
-
-            databaseReference.child("users").child(String.valueOf(user.getPhotoUrl())).setValue(selectedImageUri);
+            if (user != null) {
+                Uri selectedImageUri = data.getData();
+                profilePicture.setImageURI(selectedImageUri);
+                databaseReference.child("users").child(user.getUid()).child("photoUrl").setValue(selectedImageUri.toString());
+            } else {
+                Uri selectedImageUri = data.getData();
+                profilePicture.setImageURI(selectedImageUri);
+                Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show();
+            }
 
         }
     }
