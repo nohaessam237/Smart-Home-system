@@ -82,6 +82,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database")
     implementation ("com.facebook.android:facebook-android-sdk:latest.release")
     implementation ("com.google.android.material:material:1.5.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
 
 }

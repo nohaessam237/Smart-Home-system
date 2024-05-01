@@ -23,7 +23,6 @@ public class logs_recycler_adapter extends RecyclerView.Adapter<logs_recycler_ad
         this.logs_list = logs_list;
         this.context = context;
     }
-
     @NonNull
     @Override
     public logs_recycler_adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

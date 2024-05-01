@@ -47,11 +47,6 @@ public class Register extends AppCompatActivity {
         final TextView loginNowBtn = findViewById(R.id.loginNowBtn);
         final URI profile_picture = URI.create("");
 
-
-
-
-
-
         select_dateBtn.setOnClickListener(v -> {
             final Calendar calendar = Calendar.getInstance();
 
@@ -117,10 +112,6 @@ public class Register extends AppCompatActivity {
                             databaseReference.child("users").child(user_nameTxt).child("password").setValue(pass);
                             databaseReference.child("users").child(user_nameTxt).child("profile picture").setValue(profile_picture);
 
-                            sqlite_caching sqlite;
-                            sqlite = new sqlite_caching(Register.this);
-                            sqlite.addOne(full_nameTxt, user_nameTxt, phone, emailTxt, birth_dateTxt, pass);
-
                             Toast.makeText(Register.this, "User Registered Successfully.",Toast.LENGTH_SHORT).show();
                             finish();
                         }
@@ -132,8 +123,11 @@ public class Register extends AppCompatActivity {
                     }
                 });
 
-
-
+                sqlite_caching sqlite;
+                sqlite = new sqlite_caching(Register.this);
+                sqlite.addOne(full_nameTxt, user_nameTxt, phone, emailTxt, birth_dateTxt, pass);
+                Toast.makeText(Register.this, "User Registered Successfully only in sqlite.",Toast.LENGTH_SHORT).show();
+                finish();
             }
 
 

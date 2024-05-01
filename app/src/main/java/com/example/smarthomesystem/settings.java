@@ -6,18 +6,21 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class settings extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST_CODE = 1;
     private ImageView profilePicture;
+    TextView username;
+    TextView userphone;
     FirebaseAuth auth;
-    Logs log = new Logs();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +28,18 @@ public class settings extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
        profilePicture = findViewById(R.id.profile_picture);
+        username = findViewById(R.id.user_name);
+        userphone = findViewById(R.id.user_phone);
        ImageView backBtn = findViewById(R.id.backBtn);
        Button EditProfile = findViewById(R.id.edit_profile);
        RelativeLayout logout = findViewById(R.id.logout_layout);
+
+        FirebaseUser user = auth.getCurrentUser();
+        if(user != null){
+            profilePicture.setImageURI(user.getPhotoUrl());
+            username.setText(user.getDisplayName());
+            userphone.setText(user.getPhoneNumber());
+        }
 
         profilePicture.setOnClickListener(v -> {
             Intent imagePickerIntent = new Intent(Intent.ACTION_PICK);

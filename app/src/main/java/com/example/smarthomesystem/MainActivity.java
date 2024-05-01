@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
     FirebaseAuth auth;
     ArrayList<actions_recycler_list> actions_list;
     RecyclerView recyclerView;

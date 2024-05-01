@@ -17,12 +17,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ForgetPassword extends AppCompatActivity {
 
+    //handle updating the pass related to the username related to the typed-in email
+
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://smart-home-system-7cd5a-default-rtdb.firebaseio.com/");
     FirebaseAuth auth;
     ProgressBar progressBar;
     Button BtnReset;
     String strEmail;
-    Logs log = new Logs();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class ForgetPassword extends AppCompatActivity {
             startActivity(new Intent(ForgetPassword.this, Login.class));
             finish();
         }).addOnFailureListener(e -> {
-            Toast.makeText(log, "error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(ForgetPassword.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
 
     }

@@ -5,7 +5,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -41,12 +47,10 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Login extends AppCompatActivity {
-
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://smart-home-system-7cd5a-default-rtdb.firebaseio.com/");
     FirebaseAuth auth;
     CallbackManager mCallbackManager;
     GoogleSignInClient googleSignInClient;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -62,13 +66,12 @@ public class Login extends AppCompatActivity {
         final TextView registerNowBtn = findViewById(R.id.registerNowBtn);
         final TextView forget_pass = findViewById(R.id.forget_password);
         Button googleAuth = findViewById(R.id.googleBtn);
-        Button facebookAuth = findViewById(R.id.login_button);
+        Button facebookAuth = findViewById(R.id.facebookBtn);
 
-
-        // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
 
         facebookAuth.setOnClickListener(view -> {
+            LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList("email", "public_profile"));
             if(accessToken != null && !accessToken.isExpired()){
                 Toast.makeText(Login.this, "successfully logged in with facebook", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Login.this, MainActivity.class));
@@ -101,7 +104,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onError(@NonNull FacebookException error) {
                 // Handle login error
-                Toast.makeText(Login.this, "i guess we can't login with facebook", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "facebook login error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -114,16 +117,7 @@ public class Login extends AppCompatActivity {
         googleSignInClient = GoogleSignIn.getClient(this,google_sign_in);
 
         googleAuth.setOnClickListener(view -> {
-                    if(auth.getCurrentUser() != null){
-            startActivity(new Intent(Login.this, MainActivity.class));
-            Toast.makeText(Login.this, "successfully logged in with google", Toast.LENGTH_SHORT).show();
-            finish();
-        }
-        else{
-            Toast.makeText(this, "something went wrong", Toast.LENGTH_SHORT).show();
-        }
-
-
+                googleSignIn();
         });
 
         loginBtn.setOnClickListener(v -> {
@@ -134,33 +128,53 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(Login.this, "please enter your email address or password", Toast.LENGTH_SHORT).show();
             }
             else{
-                databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //check username if entered
-                        if (snapshot.hasChild(usernameTxt.replace(".",","))) {
-                            DataSnapshot userSnapshot = snapshot.child(usernameTxt.replace(".",","));
-                            String storedPass = userSnapshot.child("password").getValue(String.class);
-                            if (storedPass != null && storedPass.equals(pass)) {
-                                Intent intent = new Intent(Login.this,MainActivity.class);
-                                intent.putExtra("username",usernameTxt);
-                                startActivity(intent);
-                                Toast.makeText(Login.this, "successfully logged in", Toast.LENGTH_SHORT).show();
-                                finish();
-                            } else {
-                                Toast.makeText(Login.this, "wrong password", Toast.LENGTH_SHORT).show();
+                Connection connection = new Connection(Login.this);
+                if(connection.isConnectionAvailable()){
+                    //login with firebase
+                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            //check username if entered
+                            if (snapshot.hasChild(usernameTxt.replace(".",","))) {
+                                DataSnapshot userSnapshot = snapshot.child(usernameTxt.replace(".",","));
+                                String storedPass = userSnapshot.child("password").getValue(String.class);
+                                if (storedPass != null && storedPass.equals(pass)) {
+                                    Intent intent = new Intent(Login.this,MainActivity.class);
+                                    intent.putExtra("username",usernameTxt);
+                                    startActivity(intent);
+                                    Toast.makeText(Login.this, "successfully logged in with firebase", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                } else {
+                                    Toast.makeText(Login.this, "wrong password", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else{
+                                Toast.makeText(Login.this, "wrong credentials", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        else{
-                            Toast.makeText(Login.this, "wrong credentials", Toast.LENGTH_SHORT).show();
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
                         }
+                    });
+                }
+                else{
+                    //login with sqlite
+                    sqlite_caching sqlite = new sqlite_caching(Login.this);
+                    boolean bool = sqlite.auth_by_sqlite(usernameTxt, pass);
+                    if(bool){
+                        Intent intent = new Intent(Login.this,MainActivity.class);
+                        intent.putExtra("username",usernameTxt);
+                        startActivity(intent);
+                        Toast.makeText(Login.this, "successfully logged in with sqlite", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
+                    else {
+                        Toast.makeText(Login.this, "wrong password", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+
 
             }
         });
@@ -198,7 +212,7 @@ public class Login extends AppCompatActivity {
                         updateUI(user);
                     } else {
                         // If sign in fails, display a message to the user.
-                        Toast.makeText(Login.this, "Authentication failed.",
+                        Toast.makeText(Login.this, "facebook Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
                     }
                 });

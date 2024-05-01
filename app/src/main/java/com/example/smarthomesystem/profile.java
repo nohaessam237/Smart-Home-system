@@ -31,6 +31,9 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class profile extends AppCompatActivity {
+
+
+    //handle sync info by regular username & pass
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://smart-home-system-7cd5a-default-rtdb.firebaseio.com/");
     private static final int PICK_IMAGE_REQUEST_CODE = 1;
     private ImageView profilePicture;
@@ -54,12 +57,10 @@ public class profile extends AppCompatActivity {
 
         FirebaseUser user = auth.getCurrentUser();
         if(user != null){
+            profilePicture.setImageURI(user.getPhotoUrl());
             username.setText(user.getDisplayName());
             useremail.setText(user.getEmail());
             userphone.setText(user.getPhoneNumber());
-        }
-        else{
-
         }
 
         profilePicture.setOnClickListener(v -> {

@@ -29,7 +29,7 @@
     <string name="google_oauth_client_id">141441317696-r3fd5l9bivkc825arubl9i57dheio6na.apps.googleusercontent.com</string>
     <string name="facebook_app_id">7401441279964009</string>
     <string name="fb_login_protocol_scheme">fb7401441279964009</string>
-    <string name="facebook_client_token">56789</string>
+    <string name="facebook_client_token">f1e828781136b9af2070824661dc01e0</string>
     <string name="sign_in_with_facebook">Sign in with facebook</string>
     <string name="log_out">Log out</string>
     <string name="my_profile">My Profile</string>
