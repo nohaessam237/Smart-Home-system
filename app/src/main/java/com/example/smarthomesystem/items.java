@@ -44,7 +44,6 @@ public class items extends AppCompatActivity {
         else if (itemID == 1) {
             startActivity(new Intent(this, PasswordActivity.class));
             finish();
-
         }
         //implement Light activity
         else if (itemID == 2) {
