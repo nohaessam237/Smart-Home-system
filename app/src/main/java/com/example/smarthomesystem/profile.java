@@ -54,12 +54,10 @@ public class profile extends AppCompatActivity {
 
         FirebaseUser user = auth.getCurrentUser();
         if(user != null){
+            profilePicture.setImageURI(user.getPhotoUrl());
             username.setText(user.getDisplayName());
             useremail.setText(user.getEmail());
             userphone.setText(user.getPhoneNumber());
-        }
-        else{
-
         }
 
         profilePicture.setOnClickListener(v -> {

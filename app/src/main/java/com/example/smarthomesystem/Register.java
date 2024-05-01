@@ -47,11 +47,6 @@ public class Register extends AppCompatActivity {
         final TextView loginNowBtn = findViewById(R.id.loginNowBtn);
         final URI profile_picture = URI.create("");
 
-
-
-
-
-
         select_dateBtn.setOnClickListener(v -> {
             final Calendar calendar = Calendar.getInstance();
 
