@@ -69,6 +69,7 @@ public class Login extends AppCompatActivity {
         Button facebookAuth = findViewById(R.id.facebookBtn);
 
         mCallbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList("email", "public_profile"));
 
         facebookAuth.setOnClickListener(view -> {
             LoginManager.getInstance().logInWithReadPermissions(Login.this, Arrays.asList("email", "public_profile"));
